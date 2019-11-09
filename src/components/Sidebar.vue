@@ -1,0 +1,47 @@
+<template>
+<div id="sidebar">
+	<SidebarHeader />
+	<ul id="navigation">
+		<li v-for="(item, index) in navigation"
+			:key="'item'+index">
+			<span v-if="item.subnav"
+				class="icon"
+				:class="{'icon-open': !item.open,
+						'icon-closed': item.open}"></span>
+			<div class="title"
+				@click="item.open = !item.open">
+				{{ item.title }}
+			</div>
+			<Dropdown v-if="item.subnav"
+				:list="item" />
+		</li>
+	</ul>
+</div>
+</template>
+
+<script>
+	import SidebarHeader from './SidebarHeader'
+	import Dropdown from './Dropdown'
+	export default {
+		computed: {
+			navigation() {
+				return this.$store.getters.navigation;
+			}
+		},
+		components: {
+			SidebarHeader,
+			Dropdown
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+#sidebar {
+	width: 100%;
+	max-height: 350px;
+	min-height: 100vh;
+	background-color: #fefefe;
+	box-shadow: 10px 0 20px rgba($color: #000, $alpha: .2)
+}
+</style>
+
