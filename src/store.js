@@ -14,9 +14,9 @@ export const store = new Vuex.Store({
 						title: "Vue.js",
 						open: true,
 						subnav: [
-							{ title: "Transitions", }
-							{ title: "Components", }
-							{ title: "Slots", }
+							{ title: "Transitions", },
+							{ title: "Components", },
+							{ title: "Slots", },
 						]
 					},
 					{

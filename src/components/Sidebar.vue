@@ -25,12 +25,13 @@
 	export default {
 		computed: {
 			navigation() {
+				console.log("this", this.$store);
 				return this.$store.getters.navigation;
 			}
 		},
 		components: {
 			SidebarHeader,
-			Dropdown
+			Dropdown,
 		}
 	}
 </script>
