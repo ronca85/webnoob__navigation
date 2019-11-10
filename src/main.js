@@ -5,7 +5,7 @@ Vue.config.productionTip = false
 
 import { store } from './store.js'
 
-console.log(store);
+// console.log(store);
 
 new Vue({
   store,

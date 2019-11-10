@@ -1,18 +1,20 @@
 <template>
-<div id="sidebar">
+<div class="sidebar">
 	<SidebarHeader />
-	<ul id="navigation">
+	<ul id="navigation" class="list list_menu">
 		<li v-for="(item, index) in navigation"
+			class="list__item list_item_sidebar"
 			:key="'item'+index">
 			<span v-if="item.subnav"
 				class="icon"
 				:class="{'icon-open': !item.open,
 						'icon-closed': item.open}"></span>
-			<div class="title"
+			<div class="text text_menu"
 				@click="item.open = !item.open">
 				{{ item.title }}
 			</div>
-			<Dropdown v-if="item.subnav"
+			<Dropdown class="dropdown"
+				v-if="item.subnav"
 				:list="item" />
 		</li>
 	</ul>
@@ -25,7 +27,7 @@
 	export default {
 		computed: {
 			navigation() {
-				console.log("this", this.$store);
+				// console.log("this", this.$store);
 				return this.$store.getters.navigation;
 			}
 		},
@@ -37,7 +39,7 @@
 </script>
 
 <style lang="scss" scoped>
-#sidebar {
+.sidebar {
 	width: 100%;
 	max-width: 350px;
 	min-height: 100vh;
@@ -49,23 +51,37 @@
 	padding: 0;
 	list-style: none;
 	border-bottom: 1px solid #dedede;
+	
+	.list {
+		list-style: none;
+	}
+	.list_menu {}
 
-	li {
+	.list__item {}
+	.list_item_sidebar {
 		position: relative;
 		color: #555;
 		border-top: 1px solid #dedede;
 		cursor: pointer;
+	}
 
-		.title {
-			padding: 10px 0;
-			text-indent: 20px;
-		}
+	.dropdown {}
+	.dropdown_level_2 {
+		padding-left: 20px;
+	}
 
-		i {
-			position: absolute;
-			top: 12px;
-			right: 10px;
-		}
+	.text {}
+	.text_menu {
+		padding: 10px 0;
+		text-indent: 20px;
+	}
+
+	.icon {
+		position: absolute;
+		top: 12px;
+		right: 10px;
+		width: 30px;
+		height: 30px;
 	}
 }
 </style>

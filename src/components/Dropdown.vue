@@ -1,18 +1,18 @@
 <template>
-<ul class="sub-items"
+<ul class="list list_menu list_menu_level_2"
 	v-show="list.open">
-	<li class="sub-item"
+	<li class="list__item list_item_sidebar"
 		v-for="(item, index) in list.subnav"
 		:key="'item'+index">
 		<span v-if="item.subnav"
 			class="icon"
 			:class="{'icon-open': !item.open,
 					'icon-closed': item.open}"></span>
-		<div class="title"
+		<div class="text text_menu"
 			@click="item.open = !item.open">
 			{{ item.title }}
 		</div>
-		<Dropdown class="subnav"
+		<Dropdown class="dropdown"
 			v-if="item.subnav"
 			:list="item" />
 	</li>
@@ -30,31 +30,35 @@ export default {
 
 <style lang="scss" scoped>
 
-	.sub-items {
+	.list {
 		list-style: none;
+	}
+	.list_menu {}
+	.list_menu_level_2 {
+		color: #fefefe;
+		background-color: #333;
+		border-top: 1px solid #888;
+	}
 
-		.sub-item {
-			position: relative;
-			color: #fefefe;
-			background-color: #333;
-			border-top: 1px solid #222;
-			cursor: pointer;
+	.list__item {}
 
-			.subnav {
-				padding-left: 20px;
-			}
+	.dropdown {}
+	.dropdown_level_2 {
+		padding-left: 20px;
+	}
 
-			.title {
-				padding: 10px 0;
-				text-indent: 20px;
-			}
+	.text {}
+	.text_menu {
+		padding: 10px 0;
+		text-indent: 20px;
+	}
 
-			i {
-				position: absolute;
-				top: 12px;
-				right: 10px;
-			}
-		}
+	.icon {
+		position: absolute;
+		top: 12px;
+		right: 10px;
+		width: 30px;
+		height: 30px;
 	}
 </style>
 
