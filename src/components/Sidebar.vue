@@ -39,10 +39,34 @@
 <style lang="scss" scoped>
 #sidebar {
 	width: 100%;
-	max-height: 350px;
+	max-width: 350px;
 	min-height: 100vh;
 	background-color: #fefefe;
 	box-shadow: 10px 0 20px rgba($color: #000, $alpha: .2)
+}
+
+#navigation {
+	padding: 0;
+	list-style: none;
+	border-bottom: 1px solid #dedede;
+
+	li {
+		position: relative;
+		color: #555;
+		border-top: 1px solid #dedede;
+		cursor: pointer;
+
+		.title {
+			padding: 10px 0;
+			text-indent: 20px;
+		}
+
+		i {
+			position: absolute;
+			top: 12px;
+			right: 10px;
+		}
+	}
 }
 </style>
 
