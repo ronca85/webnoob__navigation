@@ -4,13 +4,13 @@
 	<li class="list__item list_item_sidebar"
 		v-for="(item, index) in list.subnav"
 		:key="'item'+index">
-		<span v-if="item.subnav"
-			class="icon"
-			:class="{'icon-open': !item.open,
-					'icon-closed': item.open}"></span>
-		<div class="text text_menu"
-			@click="item.open = !item.open">
+		<div class="text text_menu">
 			{{ item.title }}
+			<span v-if="item.subnav"
+				@click="item.open = !item.open"
+				class="icon"
+				:class="{'icon-open': !item.open,
+						'icon-closed': item.open}"></span>
 		</div>
 		<Dropdown class="dropdown"
 			v-if="item.subnav"
@@ -51,14 +51,24 @@ export default {
 	.text_menu {
 		padding: 10px 0;
 		text-indent: 20px;
+		position: relative;
 	}
 
 	.icon {
+		cursor: pointer;
 		position: absolute;
-		top: 12px;
-		right: 10px;
-		width: 30px;
-		height: 30px;
+		top: 0;
+		right: 0;
+		height: 100%;
+		display: block;
+		background-color: #39df5f;
+		width: 40px;
+		&.icon-open {
+			background-color: #df0489;
+		}
+		&.icon-closed {
+			background-color: #dbcf5d;
+		}
 	}
 </style>
 
