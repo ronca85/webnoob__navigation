@@ -4,13 +4,20 @@
 	<li class="list__item list_item_sidebar"
 		v-for="(item, index) in list.subnav"
 		:key="'item'+index">
-		<div class="text text_menu">
-			{{ item.title }}
+		<div class="shell posrel">
+			<a :href=item.title class="link link_menu">
+				{{ item.title }}
+			</a>
 			<span v-if="item.subnav"
-				@click="item.open = !item.open"
 				class="icon"
+				@click="item.open = !item.open"
 				:class="{'icon-open': !item.open,
-						'icon-closed': item.open}"></span>
+						'icon-closed': item.open}">
+				<svg class="svg svg_icon" viewBox="0 0 50 50">
+					<rect class="transform_origin_center scales_y transition_primary" width="2" height="20" x="24" y="15"></rect>
+					<rect class="" width="20" height="2" x="15" y="24"></rect>
+				</svg>
+			</span>
 		</div>
 		<Dropdown class="dropdown"
 			v-if="item.subnav"
@@ -29,46 +36,63 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.posrel {
+	position: relative;
+}
+.transform_origin_center {
+	transform-origin: center;
+}
+.transition_primary {
+	transition: .28s ease-in-out;
+}
 
-	.list {
-		list-style: none;
-	}
-	.list_menu {}
-	.list_menu_level_2 {
-		color: #fefefe;
-		background-color: #333;
-		border-top: 1px solid #888;
-	}
+.list {
+	list-style: none;
+}
+.list_menu {}
+.list_menu_level_2 {
+	color: #fefefe;
+	background-color: #333;
+	border-top: 1px solid #888;
+}
 
-	.list__item {}
+.list__item {
+	position: relative;
+}
 
-	.dropdown {}
-	.dropdown_level_2 {
-		padding-left: 20px;
-	}
+.shell {}
 
-	.text {}
-	.text_menu {
-		padding: 10px 0;
-		text-indent: 20px;
-		position: relative;
-	}
+.dropdown {}
+.dropdown_level_2 {
+	padding-left: 20px;
+}
 
-	.icon {
-		cursor: pointer;
-		position: absolute;
-		top: 0;
-		right: 0;
-		height: 100%;
-		display: block;
-		background-color: #39df5f;
-		width: 40px;
-		&.icon-open {
-			background-color: #df0489;
-		}
-		&.icon-closed {
-			background-color: #dbcf5d;
-		}
+.link {}
+.link_menu {
+	padding: 10px 0;
+	text-indent: 20px;
+	display: block;
+	color: #fff;
+}
+
+.icon {
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	display: block;
+	background-color: #39df5f;
+	width: 40px;
+}
+.icon-open {
+	background-color: #df0489;
+	.scales_y {
+		transform: scaleY(0);
 	}
+}
+.icon-closed {
+	background-color: #dbcf5d;
+}
 </style>
 

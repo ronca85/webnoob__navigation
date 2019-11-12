@@ -5,13 +5,20 @@
 		<li v-for="(item, index) in navigation"
 			class="list__item list_item_sidebar"
 			:key="'item'+index">
-			<div class="text text_menu">
-				{{ item.title }}
+			<div class="shell posrel">
+				<a :href="item.title" class="link link_menu">
+					{{ item.title }}
+				</a>
 				<span v-if="item.subnav"
-					@click="item.open = !item.open"
 					class="icon"
+					@click="item.open = !item.open"
 					:class="{'icon-open': !item.open,
-							'icon-closed': item.open}"></span>
+							'icon-closed': item.open}">
+					<svg class="svg svg_icon" viewBox="0 0 50 50">
+						<rect class="transform_origin_center scales_y transition_primary" width="2" height="20" x="24" y="15"></rect>
+						<rect class="" width="20" height="2" x="15" y="24"></rect>
+					</svg>
+				</span>
 			</div>
 			<Dropdown class="dropdown"
 				v-if="item.subnav"
@@ -39,6 +46,16 @@
 </script>
 
 <style lang="scss" scoped>
+.posrel {
+	position: relative;
+}
+.transform_origin_center {
+	transform-origin: center;
+}
+.transition_primary {
+	transition: .28s ease-in-out;
+}
+
 .sidebar {
 	width: 100%;
 	max-width: 350px;
@@ -68,11 +85,12 @@
 		padding-left: 20px;
 	}
 
-	.text {}
-	.text_menu {
+	.link {}
+	.link_menu {
 		padding: 10px 0;
 		text-indent: 20px;
-		position: relative;
+		display: block;
+		color: #000;
 	}
 
 	.icon {
@@ -87,6 +105,9 @@
 	}
 	.icon-open {
 		background-color: #df0489;
+		.scales_y {
+			transform: scaleY(0);
+		}
 	}
 	.icon-closed {
 		background-color: #dbcf5d;
