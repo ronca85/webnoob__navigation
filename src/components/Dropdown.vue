@@ -13,7 +13,7 @@
 				@click="item.open = !item.open"
 				:class="{'icon-open': !item.open,
 						'icon-closed': item.open}">
-				<svg class="svg svg_icon" viewBox="0 0 50 50">
+				<svg class="svg svg_icon w100_h100" viewBox="0 0 50 50">
 					<rect class="transform_origin_center scales_y transition_primary" width="2" height="20" x="24" y="15"></rect>
 					<rect class="" width="20" height="2" x="15" y="24"></rect>
 				</svg>
@@ -36,6 +36,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.w100_h100 {
+	width: 100%;
+	height: 100%;
+}
 .posrel {
 	position: relative;
 }
