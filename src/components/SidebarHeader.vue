@@ -1,7 +1,7 @@
 <template>
 <div id="sidebar-header">
   <div class="logo"></div>
-  <div class="name">Ruth Rechte</div>
+  <div class="name">Ime Prezime</div>
   <div class="group">Admin</div>
 </div>
 </template>
@@ -18,7 +18,7 @@ export default {
   align-items: center;
   flex-direction: column;
   height: 250px;
-  background: radial-gradient(#f35, #903);
+  background: radial-gradient(rgb(27, 150, 233), rgb(98, 192, 255));
   color: #fefefe;
   .logo {
     background-image: url('https://placedog.net/120');
