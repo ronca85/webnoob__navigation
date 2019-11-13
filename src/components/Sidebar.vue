@@ -10,7 +10,7 @@
 					{{ item.title }}
 				</a>
 				<span v-if="item.subnav"
-					class="icon icon_dropdown_toggle d_flex rounded_9999"
+					class="icon icon_accordion_toggle d_flex rounded_9999"
 					@click="item.open = !item.open"
 					:class="{'icon-closed': !item.open,
 							'icon-open': item.open}">
@@ -20,7 +20,7 @@
 					</svg>
 				</span>
 			</div>
-			<Dropdown class="dropdown"
+			<Accordion class="accordion"
 				v-if="item.subnav"
 				:list="item" />
 		</li>
@@ -30,7 +30,7 @@
 
 <script>
 	import SidebarHeader from './SidebarHeader'
-	import Dropdown from './Dropdown'
+	import Accordion from './Accordion'
 	export default {
 		computed: {
 			navigation() {
@@ -40,7 +40,7 @@
 		},
 		components: {
 			SidebarHeader,
-			Dropdown,
+			Accordion,
 		}
 	}
 </script>

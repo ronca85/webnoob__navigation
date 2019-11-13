@@ -9,7 +9,7 @@
 				{{ item.title }}
 			</a>
 			<span v-if="item.subnav"
-				class="icon icon_dropdown_toggle d_flex rounded_9999"
+				class="icon icon_accordion_toggle d_flex rounded_9999"
 				@click="item.open = !item.open"
 				:class="{'icon-closed': !item.open,
 						'icon-open': item.open}">
@@ -19,7 +19,7 @@
 				</svg>
 			</span>
 		</div>
-		<Dropdown class="dropdown dropdown_level_2"
+		<Accordion class="accordion accordion_level_2"
 			v-if="item.subnav"
 			:list="item" />
 	</li>
@@ -28,7 +28,7 @@
 
 <script>
 export default {
-	name: "Dropdown",
+	name: "Accordion",
 	props: [
 		"list"
 	]
@@ -51,8 +51,8 @@ export default {
 
 .shell {}
 
-.dropdown {}
-.dropdown_level_2 {
+.accordion {}
+.accordion_level_2 {
 	padding-left: 20px;
 }
 
@@ -65,18 +65,19 @@ export default {
 	cursor: pointer;
 	background-color: #39df5f;
 }
-.icon_dropdown_toggle {
+.icon_accordion_toggle {
 	min-width: 40px;
 	max-width: 40px;
+	background-color: #999;
 }
 .icon-open {
-	background-color: #dbcf5d;
+	// background-color: #dbcf5d;
 	.scales_y {
 		transform: scaleY(0);
 	}
 }
 .icon-closed {
-	background-color: #df0489;
+	// background-color: #df0489;
 }
 //
 // modifiers
